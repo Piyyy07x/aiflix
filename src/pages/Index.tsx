@@ -5,7 +5,6 @@ import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { toast } from '@/hooks/use-toast';
 
 interface Tool {
   id: string;
@@ -898,11 +897,8 @@ export default function Index() {
 
   const featuredTools = tools.filter(tool => tool.featured);
 
-  const handleExploreClick = (toolName: string) => {
-    toast({
-      title: "Coming Soon!",
-      description: `Detailed page for ${toolName} will be available soon.`,
-    });
+  const handleExploreClick = (website: string) => {
+    window.open(website, '_blank', 'noopener,noreferrer');
   };
 
   return (
@@ -1019,7 +1015,7 @@ export default function Index() {
                     ))}
                   </div>
                   <Button 
-                    onClick={() => handleExploreClick(tool.name)}
+                    onClick={() => handleExploreClick(tool.website)}
                     className="w-full gradient-primary hover:shadow-glow transition-smooth"
                   >
                     Explore Tool
@@ -1114,7 +1110,7 @@ export default function Index() {
                     </div>
                     
                     <Button 
-                      onClick={() => handleExploreClick(tool.name)}
+                      onClick={() => handleExploreClick(tool.website)}
                       variant="outline" 
                       className="w-full glass-effect hover:bg-primary hover:text-primary-foreground transition-smooth"
                     >
